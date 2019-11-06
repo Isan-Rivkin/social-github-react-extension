@@ -7,12 +7,19 @@ import ghlogo from './github.png';
 
 class ProfileComponent extends React.Component {
     renderHeader(){
-        return (<NavBar/>)
+        return (<NavBar onDeleteAccount={this.props.onDeleteAccount}/>)
+    }
+    getAvatar(){
+        const user = JSON.parse(localStorage.getItem('user'))
+        if(user){
+            return user.avatar
+        }
+        return ghlogo
     }
     render(){
         return (
-            <Card style={{ width: '30rem' }}>
-            <Card.Img variant="top" width="30%" height="30%" src={ghlogo} />
+            <Card style={{ width: '40rem' }}>
+            <Card.Img variant="top" width="30%" height="30%" src={this.getAvatar()} />
             <Card.Body>
             {this.renderHeader()}
             </Card.Body>

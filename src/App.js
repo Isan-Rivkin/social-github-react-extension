@@ -19,10 +19,10 @@ class App extends React.Component {
   render(){
     if(this.isUserExist()){
       // load user flow 
-      return <ProfileComponent />
+      return <ProfileComponent onDeleteAccount={this.refresh.bind(this)}/>
     }else{
       // load create flow 
-      return <CreateComponent onSubmit ={this.refresh.bind(this)}/>
+      return <CreateComponent onSubmit={this.refresh.bind(this)}/>
     }
   }
 }

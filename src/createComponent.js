@@ -43,6 +43,7 @@ class CreateComponent extends React.Component {
       u.following       = data.following
       u.followers_url   = data.followers_url
       u.repos_url       = data.repos_url
+      u.html_url        = data.html_url
       localStorage.setItem('user', JSON.stringify(u))
       localStorage.setItem('extra_repos', this.state.extra_repos)
       this.props.onSubmit(true)
@@ -57,7 +58,7 @@ class CreateComponent extends React.Component {
     return "Enter Github User"
   }
   defaultExtraRepos(){
-    return this.getLocalStorage().extra_repos || "github.com/bitcoin,github.com/torvalds/linux"
+    return this.getLocalStorage().extra_repos || "https://github.com/bitcoin/bitcoin,github.com/torvalds/linux"
   }
   renderForm(){
     return (
@@ -91,7 +92,7 @@ class CreateComponent extends React.Component {
   }
   render(){
       return (
-      <Card style={{ width: '30rem' }}>
+      <Card style={{ width: '40rem' }}>
       <Card.Img variant="top" width="30%" height="30%" src={ghlogo} />
       <Card.Body>
       {this.renderForm()}
