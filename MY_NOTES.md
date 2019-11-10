@@ -97,7 +97,7 @@ for forks `forks`
     "description": "Apache Airflow",
     "fork": true,
     "url": "https://api.github.com/repos/Isan-Rivkin/airflow",
-    "forks_url": "https://api.github.com/repos/Isan-Rivkin/airflow/forks",
+    "forks_url": "https://api.github.com/repos/Isan-Rivkin/airflow/forks", // forkers https://api.github.com/repos/enigmampc/enigma-p2p/forks
     "keys_url": "https://api.github.com/repos/Isan-Rivkin/airflow/keys{/key_id}",
     "collaborators_url": "https://api.github.com/repos/Isan-Rivkin/airflow/collaborators{/collaborator}",
     "teams_url": "https://api.github.com/repos/Isan-Rivkin/airflow/teams",
@@ -113,7 +113,7 @@ for forks `forks`
     "trees_url": "https://api.github.com/repos/Isan-Rivkin/airflow/git/trees{/sha}",
     "statuses_url": "https://api.github.com/repos/Isan-Rivkin/airflow/statuses/{sha}",
     "languages_url": "https://api.github.com/repos/Isan-Rivkin/airflow/languages",
-    "stargazers_url": "https://api.github.com/repos/Isan-Rivkin/airflow/stargazers",
+    "stargazers_url": "https://api.github.com/repos/Isan-Rivkin/airflow/stargazers", // the ppl who did star the repo 
     "contributors_url": "https://api.github.com/repos/Isan-Rivkin/airflow/contributors",
     "subscribers_url": "https://api.github.com/repos/Isan-Rivkin/airflow/subscribers",
     "subscription_url": "https://api.github.com/repos/Isan-Rivkin/airflow/subscription",
@@ -168,3 +168,37 @@ for forks `forks`
     "default_branch": "master"
   }
   ```
+
+
+
+  ## DB style 
+
+  user : {
+    
+  }
+
+  extra_urls : []
+
+  repos : [
+    'repo1' : {curState: {stars,forks,ppl_stars,ppl_forks}}
+  ]
+
+  feed : [
+    'eventid' : {
+      type : 'fork',
+      who : forkObj.owner.login
+      url : forkObj.html_url 
+      repoName :'',
+    }, 
+    'eventid' :{
+      type : 'star', 
+      who : stargazersObj.login
+      url : stargazersObj.html_url
+      repoName : '', 
+    },
+    'eventid' :{
+      type : 'follower', 
+      who : followersObj.login
+      url : followersObj.html_url
+    }
+  ]
