@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import DisplayGeneralStats from './DisplayGeneralStats'
+import DisplayGeneralProfile from './DisplayGeneralProfile'
 import ghlogo from './github.png';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -67,7 +68,7 @@ class NavBarComponent extends React.Component {
         return 0
     }
     renderProfile(){
-        return <DisplayGeneralStats data={
+        return <DisplayGeneralProfile data={
             {
                 homeUrl: this.getHtmlUrl(),
                 name : this.getName(),
