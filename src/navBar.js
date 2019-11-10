@@ -12,6 +12,7 @@ import DisplayGeneralStats from './DisplayGeneralStats'
 import DisplayGeneralProfile from './DisplayGeneralProfile'
 import ghlogo from './github.png';
 import 'bootstrap/dist/css/bootstrap.css';
+import ReposListComponent from './ReposListComponent'
 
 class NavBarComponent extends React.Component {
     getUser(){
@@ -67,18 +68,13 @@ class NavBarComponent extends React.Component {
         }
         return 0
     }
-    renderProfile(){
-        return <DisplayGeneralProfile data={
-            {
-                homeUrl: this.getHtmlUrl(),
-                name : this.getName(),
-                username : this.getUserName(),
-                followers : this.getFollowers(),
-                following : this.getFollowing(),
-                avatar : this.getAvatar(),
-                repos : this.getReposNum(),
-            }
-        }/>
+    renderMyRepos(){
+        return (
+            <div>
+                <h1>repo 1 </h1>
+                <ReposListComponent />
+            </div>
+        )
     }
     renderFeed(){
         console.log("render!")
@@ -113,9 +109,9 @@ class NavBarComponent extends React.Component {
                 <br/>
                 {this.renderFeed()}
             </Tab>
-            <Tab eventKey="profile" title="Profile">
+            <Tab eventKey="my_repos" title="My Repos">
                 <br/>
-                {this.renderProfile()}
+                {this.renderMyRepos()}
             </Tab>
             <Tab eventKey="settings" title="Settings">
                 <br/>
