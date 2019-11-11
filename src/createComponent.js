@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import ghlogo from './github.png';
-import {getProfile,getReposWithLimit } from './github'
+import {getProfile,getUserRepoParsed } from './github'
 
 class CreateComponent extends React.Component {
   state = {name : '', extra_repos : []}
@@ -46,18 +46,9 @@ class CreateComponent extends React.Component {
       u.html_url        = data.html_url
       localStorage.setItem('user', JSON.stringify(u))
       localStorage.setItem('extra_repos', this.state.extra_repos)
-      getReposWithLimit(data.login,2000).then(reposRes => {
-        const r = []
-        reposRes.forEach(repo =>{ 
-          r.push({
-            name : repo.name, 
-            html_url : repo.html_url,
-            isFork : repo.fork, 
-            stars : repo.watchers, 
-            forks : repo.forks 
-          })
-        })
-        localStorage.setItem('repos' , JSON.stringify(r))
+      getUserRepoParsed(data.login,2000).then(reposRes => {
+        console.log("got something! " , reposRes)
+        localStorage.setItem('repos' , JSON.stringify(reposRes))
         this.props.onSubmit(true)
       }).catch(e =>{
         this.props.onSubmit(false)

@@ -26,7 +26,7 @@ export function getProfile(text){
 
 export function getReposWithLimit(username, reposLimit){
     return new Promise((resolve,reject) => {
-        let url = `https://api.github.com/users/{${username}/repos?per_page=${reposLimit}`
+        let url = `https://api.github.com/users/${username}/repos?per_page=${reposLimit}`
         axios.get(url).then(res=>{
             resolve(res.data)
         }).catch(e=>{
@@ -117,5 +117,8 @@ const _getUserReposParsed = function (userName, reposLimit ){
         })
         .catch(reject)
     })
+}
+export function getUserRepoParsed(userName,reposLimit){
+    return _getUserReposParsed(userName, reposLimit)
 }
 
